@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudaí | Seu jeito fácil de aprender</title>
+    <meta name="description" content="Estudaí — reforço escolar simples, acolhedor e com foco no aprendizado." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js" defer></script>
+    <script src="firebase-config.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-mark" aria-label="Estudaí">
+          <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
+          <span>Estudaí</span>
+        </div>
+        <nav class="topnav" aria-label="Navegação principal">
+          <button class="nav-btn" id="logout-button" type="button" hidden>Sair</button>
+        </nav>
+      </header>
+
+      <main>
+        <p id="appMessage" class="app-message" role="alert" aria-live="polite" hidden></p>
+
+        <section id="loginSection" class="auth-card">
+          <div class="auth-header">
+            <div class="brand-icon"><span class="material-symbols-outlined" aria-hidden="true">school</span></div>
+            <h1>Estudaí</h1>
+            <p>Seu jeito fácil de aprender</p>
+          </div>
+          <form id="loginForm" class="auth-form">
+            <div class="field">
+              <label for="emailLogin">E-mail</label>
+              <input type="email" id="emailLogin" autocomplete="email" placeholder="Digite seu e-mail" required />
+            </div>
+            <div class="field">
+              <label for="senhaLogin">Senha</label>
+              <input type="password" id="senhaLogin" autocomplete="current-password" placeholder="Digite sua senha" required />
+            </div>
+            <button type="submit" class="primary-btn large">Entrar</button>
+            <button type="button" class="secondary-btn large" id="showRegisterButton">Criar conta</button>
+          </form>
+        </section>
+
+        <section id="criarContaSection" class="auth-card hidden">
+          <div class="auth-header">
+            <div class="brand-icon"><span class="material-symbols-outlined" aria-hidden="true">person_add</span></div>
+            <h2>Criar conta</h2>
+            <p>Preencha os dados para começar a estudar</p>
+          </div>
+          <form id="registerForm" class="auth-form">
+            <div class="field">
+              <label for="nomeCriar">Nome</label>
+              <input type="text" id="nomeCriar" autocomplete="name" placeholder="Seu nome completo" required />
+            </div>
+            <div class="field">
+              <label for="emailCriar">E-mail</label>
+              <input type="email" id="emailCriar" autocomplete="email" placeholder="Digite seu e-mail" required />
+            </div>
+            <div class="field">
+              <label for="senhaCriar">Senha</label>
+              <input type="password" id="senhaCriar" autocomplete="new-password" minlength="6" placeholder="Crie uma senha (mínimo 6 caracteres)" required />
+            </div>
+            <button type="submit" class="primary-btn large">Registrar</button>
+            <button type="button" class="secondary-btn large" id="showLoginButton">Voltar</button>
+          </form>
+        </section>
+
+        <section id="topicosSection" class="hidden">
+          <div class="page-header">
+            <h2>Escolha um tópico</h2>
+          </div>
+          <div class="subject-grid">
+            <button class="subject-card" type="button" data-topic="fracoes">
+              <span class="subject-icon material-symbols-outlined" aria-hidden="true">calculate</span>
+              <span><span class="subject-label">Matemática</span><span class="subject-title">Frações e equivalência</span></span>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+            <button class="subject-card" type="button" data-topic="ciencias">
+              <span class="subject-icon material-symbols-outlined" aria-hidden="true">science</span>
+              <span><span class="subject-label">Ciências</span><span class="subject-title">Ciências</span></span>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+            <button class="subject-card" type="button" data-topic="historia">
+              <span class="subject-icon material-symbols-outlined" aria-hidden="true">history_edu</span>
+              <span><span class="subject-label">História</span><span class="subject-title">História do Brasil</span></span>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </button>
+          </div>
+        </section>
+
+        <section id="aulaSection" class="hidden">
+          <div class="lesson-card">
+            <div class="page-header">
+              <h2 id="lessonTitle">Conteúdo da aula</h2>
+            </div>
+            <div id="conteudoAula" class="lesson-block"></div>
+          </div>
+          <div class="exercise-card">
+            <h2>Exercícios</h2>
+            <div id="listaExercicios"></div>
+          </div>
+          <button class="secondary-btn compact" id="backToTopicsButton" type="button">Voltar aos tópicos</button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Estudaí - Reforço Escolar",
+  "description": "Seu espaço diário de reforço escolar focado, simples e acolhedor para o ensino fundamental e médio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
